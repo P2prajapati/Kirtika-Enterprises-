@@ -1,0 +1,624 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>KIRTIKA ENTERPRISE</title>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+
+:root{
+--text:#1f2937;
+--border:#e5e7eb;
+}
+
+body{
+font-family:Segoe UI,Tahoma,Geneva,Verdana,sans-serif;
+color:var(--text);
+overflow-x:hidden;
+}
+
+/* ================= NAV ================= */
+nav{
+position:fixed;
+top:0;
+width:100%;
+padding:1.2rem 3%;
+background:rgba(255, 255, 255, 0.425);
+backdrop-filter:blur(20px);
+display:flex;
+justify-content:space-between;
+align-items:center;
+z-index:1000;
+border-bottom:2px solid var(--border);
+box-shadow:0 4px 20px rgba(0,0,0,.08);
+}
+
+.logo{
+font-size:2.6rem;
+font-weight:700;
+letter-spacing:3px;
+background:linear-gradient(135deg,#ec4899,#3b82f6,#8b5cf6);
+-webkit-background-clip:text;
+-webkit-text-fill-color:transparent;
+}
+
+nav ul{
+display:flex;
+gap:2rem;
+list-style:none;
+}
+
+nav a{
+text-decoration:none;
+color:var(--text);
+font-weight:600;
+text-transform:uppercase;
+font-size:.85rem;
+position:relative;
+}
+
+nav a::after{
+content:"";
+position:absolute;
+bottom:-5px;
+left:0;
+width:0;
+height:3px;
+background:linear-gradient(90deg,#ec4899,#3b82f6);
+transition:.3s;
+}
+
+nav a:hover::after{width:100%}
+
+/* ================= HERO ================= */
+.hero{
+padding-top:100px;
+height:600px;
+position:relative;
+overflow:hidden;
+background:#f3f4f6;
+}
+
+.hero-slider{
+display:flex;
+height:100%;
+transition:transform .8s ease-in-out;
+}
+
+.hero-slide{
+min-width:100%;
+position:relative;
+}
+
+.hero-slide img{
+width:100%;
+height:100%;
+object-fit:cover;
+}
+
+.hero-slide::before{
+content:"";
+position:absolute;
+inset:0;
+background:linear-gradient(45deg,rgba(236,72,153,.2),rgba(59,130,246,.2));
+}
+
+.hero-content{
+position:absolute;
+top:50%;
+left:50%;
+transform:translate(-50%,-50%);
+text-align:center;
+max-width:90%;
+padding:0 1rem;
+color:#fff;
+z-index:2;
+}
+
+.hero-content h1{
+font-size:3rem;
+background:linear-gradient(135deg,#ffffff,#ffffff,#ffffff);
+-webkit-background-clip:text;
+-webkit-text-fill-color:transparent;
+}
+
+.hero-content p{
+margin-top:1rem;
+font-size:1.2rem;
+color:#e5e7eb;
+}
+
+.hero-dots{
+position:absolute;
+bottom:25px;
+left:50%;
+transform:translateX(-50%);
+display:flex;
+gap:12px;
+}
+
+.dot{
+width:12px;
+height:12px;
+border-radius:50%;
+background:#9ca3af;
+cursor:pointer;
+transition:.3s;
+}
+
+.dot.active{
+width:32px;
+border-radius:8px;
+background:#ec4899;
+}
+
+/* ================= SERVICES ================= */
+.services{
+padding:5rem 3%;
+max-width:1400px;
+margin:auto;
+}
+
+.section-title{
+text-align:center;
+margin-bottom:4rem;
+}
+
+.section-title h2{
+font-size:2.6rem;
+background:linear-gradient(135deg,#ec4899,#3b82f6);
+-webkit-background-clip:text;
+-webkit-text-fill-color:transparent;
+}
+
+.section-title p{
+margin-top:1rem;
+color:#6b7280;
+}
+
+.services-grid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
+gap:2rem;
+}
+
+.service-card{
+background:#fff;
+padding:2.2rem;
+border-radius:15px;
+box-shadow:0 6px 18px rgba(0,0,0,.08);
+border:2px solid var(--border);
+opacity:0;
+transform:translateY(30px);
+transition:.4s;
+}
+
+.service-card:hover{
+transform:translateY(-12px);
+border-color:#ec4899;
+}
+
+.service-icon{
+font-size:2.8rem;
+background:linear-gradient(135deg,#3b82f6,#8b5cf6);
+-webkit-background-clip:text;
+-webkit-text-fill-color:transparent;
+margin-bottom:1rem;
+}
+
+.service-card h3{
+margin-bottom:.8rem;
+}
+
+.service-card p{
+color:#6b7280;
+}
+/* ===== OFFER IMAGE CARDS ===== */
+.offer-images{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+gap:2rem;
+margin-bottom:4rem;
+}
+
+.offer-card{
+background:#fff;
+border-radius:16px;
+overflow:hidden;
+box-shadow:0 8px 25px rgba(0,0,0,.08);
+transition:.4s;
+border:2px solid var(--border);
+text-align:center;
+}
+
+.offer-card img{
+width:100%;
+height:200px;
+object-fit:cover;
+}
+
+.offer-card h4{
+margin:1.2rem 0 .6rem;
+font-size:1.3rem;
+}
+
+.offer-card p{
+padding:0 1.2rem 1.6rem;
+color:#6b7280;
+font-size:.95rem;
+}
+
+.offer-card:hover{
+transform:translateY(-12px);
+border-color:#ec4899;
+box-shadow:0 15px 35px rgba(236,72,153,.18);
+}
+
+/* ================= BROCHURE ================= */
+/* .brochure{
+padding:5rem 3%;
+text-align:center;
+color:#fff;
+background:linear-gradient(135deg,#ec4899,#3b82f6,#8b5cf6);
+}
+
+.download-btn{
+padding:1rem 3rem;
+border-radius:50px;
+border:2px solid #fff;
+background:rgba(255,255,255,.25);
+color:#fff;
+font-size:1.1rem;
+font-weight:700;
+cursor:pointer;
+transition:.3s;
+}
+
+.download-btn:hover{
+background:rgba(255,255,255,.4);
+} */
+.brochure-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 20px;
+    margin-top: 20px;
+}
+
+.brochure-item {
+    padding: 15px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    text-align: center;
+}
+
+.download-btn {
+    margin-top: 10px;
+    padding: 10px 16px;
+    background: #222;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.download-btn i {
+    margin-right: 6px;
+}
+
+/* ================= CONTACT ================= */
+.contact{
+padding:4rem 3%;
+text-align:center;
+}
+
+.contact h2{
+font-size:2.5rem;
+background:linear-gradient(135deg,#ec4899,#3b82f6);
+-webkit-background-clip:text;
+-webkit-text-fill-color:transparent;
+margin-bottom:2rem;
+}
+
+.contact-icons{
+display:flex;
+justify-content:center;
+gap:3rem;
+flex-wrap:wrap;
+}
+
+.contact-btn{
+width:90px;
+height:90px;
+border-radius:50%;
+display:flex;
+align-items:center;
+justify-content:center;
+font-size:2.2rem;
+color:#fff;
+transition:.3s;
+}
+
+.whatsapp-btn{background:#25D366}
+.call-btn{background:#3b82f6}
+
+.contact-btn:hover{
+transform:scale(1.15);
+}
+
+/* ================= FOOTER ================= */
+footer{
+background:#1f2937;
+color:#9ca3af;
+text-align:center;
+padding:1.5rem;
+}
+
+/* ================= RESPONSIVE ================= */
+@media(max-width:768px){
+.hero{height:420px}
+.hero-content h1{font-size:2.2rem}
+nav ul{gap:1rem}
+}
+
+@media(max-width:480px){
+nav{flex-direction:column;gap:.8rem}
+nav ul{flex-direction:column}
+.hero{padding-top:140px;height:320px}
+.hero-content h1{font-size:1.8rem}
+}
+</style>
+</head>
+
+<body>
+
+<nav>
+<div class="logo">KIRTIKA ENTERPRISE</div>
+<!-- <ul>
+<li><a href="#home">Home</a></li>
+<li><a href="#services">Services</a></li>
+<li><a href="#brochure">Brochure</a></li>
+<li><a href="#contact">Contact</a></li>
+</ul> -->
+</nav>
+
+<section class="hero" id="home">
+<div class="hero-slider">
+<div class="hero-slide">
+<img src="images/wall1.jpg" alt="Planning">
+
+<div class="hero-content">
+<h1>We Offer Professional Services</h1>
+<p>with Quality</p>
+</div>
+</div>
+<div class="hero-slide">
+<img src="images/wall2.webp" alt="Planning">
+<div class="hero-content">
+<h1>Quality & Innovation</h1>
+<p>Beyond Expectations</p>
+</div>
+</div>
+<div class="hero-slide">
+<img src="images/wall3.jpg" alt="Planning">
+<div class="hero-content">
+<h1>Your Dream interior</h1>
+<p>is Our Mission</p>
+</div>
+</div>
+</div>
+
+<div class="hero-dots">
+<span class="dot active" onclick="currentSlide(1)"></span>
+<span class="dot" onclick="currentSlide(2)"></span>
+<span class="dot" onclick="currentSlide(3)"></span>
+</div>
+</section>
+
+<section class="services" id="services">
+<div class="section-title">
+<h2>We are Offering </h2>
+<!-- <p>To Craft Your Dream Home</p> -->
+</div>
+<!-- Offer Images Section -->
+<div class="offer-images">
+    
+    <div class="offer-card">
+       <img src="images/partition.webp" alt="Planning">
+        <h4>Aluminium slider partition</h4>
+        <p>Aluminium slider partitions offer a sleek and modern way to divide spaces without blocking light. They are durable, low-maintenance, and perfect for homes and offices.</p>
+    </div>
+
+    <div class="offer-card">
+        <img src="images/pvcdoor.jpg" alt="Planning">
+        <h4>PVC Door</h4>
+        <p>PVC doors are water-resistant, termite-proof, and ideal for bathrooms and kitchens. They provide long-lasting performance with a neat, modern finish..</p>
+    </div>
+
+    <div class="offer-card">
+        <img src="images/slider.webp" alt="Planning">
+        <h4>Aluminium window</h4>
+        <p>Aluminium windows are strong, rust-free, and designed for smooth operation and ventilation. Their slim frames give a stylish look while ensuring durability.</p>
+    </div>
+</div>
+
+<div class="services-grid">
+<div class="offer-card">
+        <img src="images/PVC-False-Ceilings.webp" alt="Planning">
+        <h4>PVC False Ceiling</h4>
+        <p>PVC false ceilings enhance interior appearance while hiding wiring and ducts neatly. They are moisture-resistant, lightweight, and easy to maintain.</p>
+    </div>
+
+<div class="offer-card">
+        <img src="images/wallpannle.jpg" alt="Planning">
+        <h4>PVC Wall Paneling</h4>
+        <p>PVC wall paneling adds a decorative and protective layer to walls. It is waterproof, easy to clean, and available in multiple designs and textures.</p>
+    </div>
+    
+<div class="offer-card">
+        <img src="images/railing.jpg" alt="Planning">
+        <h4>Balcony & Stairs Railing</h4>
+        <p>Balcony and stair railings provide safety while enhancing the overall look of the space. Made with strong materials, they offer durability with elegant design.</p>
+    </div>
+
+</div>
+
+
+<!-- 
+</section>
+
+<section class="brochure" id="brochure">
+<h2>Download Our Brochure1</h2>
+<p>Detailed info about our services</p>
+<button class="download-btn"><i class="fas fa-download"></i> Download</button>
+
+<h2>Download Our Brochure1</h2>
+<p>Detailed info about our services</p>
+<button class="download-btn"><i class="fas fa-download"></i> Download</button>
+
+<h2>Download Our Brochure1</h2>
+<p>Detailed info about our services</p>
+<button class="download-btn"><i class="fas fa-download"></i> Download</button>
+
+<h2>Download Our Brochure1</h2>
+<p>Detailed info about our services</p>
+<button class="download-btn"><i class="fas fa-download"></i> Download</button>
+
+</section> -->
+
+<section class="brochure" id="brochure">
+    <h2>Download Our Brochures</h2>
+    <!-- <p>Detailed information about our services</p> -->
+
+    <div class="brochure-list">
+
+        <div class="brochure-item">
+            <h3>PVC Door (bAZOOKA FLUTED)</h3>
+            <a href="brouchers\bAZOOKA FLUTED DOOR.pdf" download>
+                <button class="download-btn">
+                    <i class="fas fa-download"></i> Download PDF
+                </button>
+            </a>
+        </div>
+
+        <div class="brochure-item">
+            <h3>PVC Door 2</h3>
+            <a href="brouchers\Door &  Door Book jan 26_compressed.pdf" download>
+                <button class="download-btn">
+                    <i class="fas fa-download"></i> Download PDF
+                </button>
+            </a>
+        </div>
+
+        <div class="brochure-item">
+            <h3>PVC Door Raunaq Luxury</h3>
+            <a href="brouchers\Raunaq Luxury book 04 12 24.pdf" download>
+                <button class="download-btn">
+                    <i class="fas fa-download"></i> Download PDF
+                </button>
+            </a>
+        </div>
+
+        <div class="brochure-item">
+            <h3>TV Unit & Temple </h3>
+            <a href="brouchers\TV & temple.pdf" download>
+                <button class="download-btn">
+                    <i class="fas fa-download"></i> Download PDF
+                </button>
+            </a>
+        </div>
+
+        <div class="brochure-item">
+            <h3>Stairs Railing & Balcony</h3>
+            <a href="brouchers\railing.pdf" download>
+                <button class="download-btn">
+                    <i class="fas fa-download"></i> Download PDF
+                </button>
+            </a>
+        </div>
+
+        <div class="brochure-item">
+            <h3>kitchen cabinet</h3>
+            <a href="brouchers\cabinet.pdf" download>
+                <button class="download-btn">
+                    <i class="fas fa-download"></i> Download PDF
+                </button>
+            </a>
+        </div>
+
+        <!-- <div class="brochure-item">
+            <h3>Stairs Railing</h3>
+            <a href="brochures/staircase-railing.pdf" download>
+                <button class="download-btn">
+                    <i class="fas fa-download"></i> Download PDF
+                </button>
+            </a>
+        </div>
+
+        <div class="brochure-item">
+            <h3>Complete Catalogue</h3>
+            <a href="brochures/full-catalogue.pdf" download>
+                <button class="download-btn">
+                    <i class="fas fa-download"></i> Download PDF
+                </button>
+            </a>
+        </div> -->
+
+    </div>
+</section>
+
+
+<section class="contact" id="contact">
+<h2>Get In Touch</h2>
+<div class="contact-icons">
+<a href="https://wa.me/919007408370" class="contact-btn whatsapp-btn"><i class="fab fa-whatsapp"></i></a>
+<a href="tel:+919007408370" class="contact-btn call-btn"><i class="fas fa-phone"></i></a>
+</div>
+</section>
+
+<footer>
+<p>Call/whatsapp :- 9007408370 (Mr.Pradip Prajapti) / 8420914174(Mr.Krishna Dewar)</p>
+</footer>
+
+<script>
+let slideIndex=1,timer;
+
+function showSlide(n){
+const slider=document.querySelector(".hero-slider");
+const dots=document.querySelectorAll(".dot");
+slider.style.transform=`translateX(${-(n-1)*100}%)`;
+dots.forEach(d=>d.classList.remove("active"));
+dots[n-1].classList.add("active");
+}
+
+function autoSlide(){
+slideIndex=slideIndex>=3?1:slideIndex+1;
+showSlide(slideIndex);
+timer=setTimeout(autoSlide,8000);
+}
+
+function currentSlide(n){
+clearTimeout(timer);
+slideIndex=n;
+showSlide(n);
+timer=setTimeout(autoSlide,8000);
+}
+
+window.onload=()=>{showSlide(1);timer=setTimeout(autoSlide,8000)};
+
+const observer=new IntersectionObserver(e=>{
+e.forEach(i=>{
+if(i.isIntersecting){
+i.target.style.opacity=1;
+i.target.style.transform="translateY(0)";
+}
+})
+},{threshold:.2});
+
+document.querySelectorAll(".service-card").forEach(c=>observer.observe(c));
+</script>
+
+</body>
+</html>
